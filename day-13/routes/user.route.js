@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { Create, Get_all, Details, Edit, Destroy } = require('../actions/User/CRUD.action')
+const { Create, Get_all, Details, Edit, Destroy } = require('../actions/users/CRUD.action')
 const { check, validationResult, body } = require('express-validator')
 
 router.post('/create', 
@@ -13,8 +13,7 @@ router.post('/create',
     .isEmpty(),
     check('email')
     .not()
-    .isEmpty()
-    .isEmail(),
+    .isEmpty(),
     check('gender')
     .not()
     .isEmpty(),

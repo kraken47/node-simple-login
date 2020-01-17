@@ -5,22 +5,33 @@ const Schema = mongoose.Schema
 let userSchema = new Schema ({
     name: {
         type: String,
-        default: null
+        default: null,
     },
     email: {
         type: String,
         default: null,
-        unique: true
+        unique: true,
+        trim: true,
     },
     username: {
         type: String,
         default: null,
-        unique: true 
+        unique: true,
+        trim: true
     }, 
-    gender: String, 
+    gender: {
+        type: String,
+        trim: true
+    },
     phone: {
         type: String,
         default: null,
+        trim: true
+    },
+    role_id: {
+        type: String,
+        default: null,
+        trim: true
     },
     password: {
         type: String,

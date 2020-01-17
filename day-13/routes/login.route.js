@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Login = require('../actions/login/login.action')
+const { check, validationResult } = require("express-validator")
 
 router.post('/', async (req, res) => {
     try { 
