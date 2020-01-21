@@ -21,6 +21,7 @@ class Create {
             gender: this.gender,
             phone: this.phone,
             role_id: this.role_id,
+            activated_at: Date.now(),
             password,
         }
         

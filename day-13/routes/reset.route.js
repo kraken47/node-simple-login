@@ -6,7 +6,7 @@ const Reset = require("../actions/reset/resetpassword.action")
 
 router.post("/", async (req, res) => {
     try {
-        let data = await new ForgotPassword(req.body.email).exec()
+        let data = await new ForgotPassword(req).exec()
 
         return res.send({
             status: 'success',

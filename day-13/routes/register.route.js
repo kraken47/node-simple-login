@@ -9,8 +9,7 @@ check('name')
     .not()
     .isEmpty(),
 check('email')
-    .not()
-    .isEmpty(),
+    .isEmail(),
 check('username')
     .not()
     .isEmpty(),

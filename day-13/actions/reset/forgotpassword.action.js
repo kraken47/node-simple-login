@@ -6,21 +6,26 @@ const token = randomKey(54, 'aA#')
 
 
 class ForgotPassword {
-    constructor(email) {
-        this.email = email
+    constructor(req) {
+        this.email = req.body.email
+        this.username = req.body.username
     }
 
     async exec() {
         try {
-            let user = await User.findOne({ email: this.email }).exec()
+            let user = await User.findOne({ 
+                $or: [{email: this.email}, {username: this.username}]            
+            }).exec()
 
             if(user === null) {
                 throw new Error('User not found')
             }
 
-            
-            let password = new ResetPassword({ email: this.email, token })
+            let password = new ResetPassword({ 
+                $or: [{email: this.email}, {username: this.username}], token })
             await password.save()
+
+            let get_email = await User.find()
             
             const options = {
                 host: process.env.EMAIL_HOST,
